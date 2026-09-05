@@ -18,7 +18,7 @@ const transport = nodemailer.createTransport({
   }
 })
 
-const PORT = process.env.PORT || 7000;
+
 
 
 
@@ -119,6 +119,8 @@ app.post("/verify",async(req,res)=>{
   res.send("worng otp")
 })
 
-app.listen(PORT,  () => {
-  console.log(`Server running on ${PORT}`);
+const PORT = process.env.PORT || 7000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
