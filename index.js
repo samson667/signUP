@@ -112,6 +112,6 @@ app.post("/verify",async(req,res)=>{
   res.send("worng otp")
 })
 
-app.listen(80, '0.0.0.0', () => {
-    console.log('Server running on  80 ')
+app.listen(7000, '0.0.0.0', () => {
+    console.log('Server running on  7000 ')
 })
