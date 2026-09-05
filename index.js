@@ -15,6 +15,11 @@ const transport = nodemailer.createTransport({
   }
 })
  
+
+const PORT = process.env.PORT || 7000;
+
+
+
 app.use(express.json())
 
 let absulate_path = fileURLToPath(import.meta.url)
@@ -112,6 +117,6 @@ app.post("/verify",async(req,res)=>{
   res.send("worng otp")
 })
 
-app.listen(7000, '0.0.0.0', () => {
-    console.log('Server running on  7000 ')
-})
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`);
+});
