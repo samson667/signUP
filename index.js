@@ -7,14 +7,15 @@ import { otp_generte } from './private/otp.js'
 import  {db_otp} from './private/atlas.js'
 const app = express()
 
+
+ 
 const transport = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'notshareotp@gmail.com',
-    pass: 'hwcb ozwx xghd mzya'
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   }
 })
- 
 
 const PORT = process.env.PORT || 7000;
 
