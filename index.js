@@ -117,6 +117,6 @@ app.post("/verify",async(req,res)=>{
   res.send("worng otp")
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on ${PORT}`);
 });
