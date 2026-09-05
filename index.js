@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
     
     res.sendFile(path.join(dirpath, 'views', 'home.html'))
   } catch (error) {
-    res.status(500).res.send('server is failed')
+    res.status(500).send('server is failed')
   }
 })
 
