@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create your account</title>
+
+  <link rel="stylesheet" href="/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="page">
+
+    <div class="card">
+
+      <div class="card-head">
+
+        <!-- <div class="mark">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path
+              d="M11 1.5L20.5 11L11 20.5L1.5 11L11 1.5Z"
+              stroke="currentColor"
+              stroke-width="1.4"
+            />
+
+            <circle
+              cx="11"
+              cy="11"
+              r="3.2"
+              fill="currentColor"
+            />
+          </svg>
+        </div> -->
+
+        <h1>Create your account</h1>
+
+        <p>
+          Verify your email to get started. It takes less than a minute.
+        </p>
+
+      </div>
+
+
+      <form id="signupForm" action="/send-otp" novalidate>
+
+
+        <!-- Full Name -->
+
+        <div class="field">
+
+          <label for="name">
+            Full name
+          </label>
+
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="NAME  "
+            autocomplete="name"
+            required
+          >
+
+        </div>
+
+
+        <!-- Age + Email -->
+
+        <div class="field-row">
+
+
+          <!-- Age -->
+
+          <div class="field">
+
+            <label for="age" >
+              Age
+            </label>
+
+            <input
+              type="number"
+              id="age"
+              name="age"
+              placeholder="age"
+              min="13"
+              max="120"
+              required
+            >
+
+          </div>
+
+
+          <!-- Email -->
+
+          <div class="field field-wide">
+
+            <label for="email">
+              Email address
+            </label>
+
+            <div class="input-with-action">
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              >
+
+              <button
+                type="button"
+                id="sendOtpBtn"
+                class="btn-inline"
+              >
+                Send OTP
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- OTP Section -->
+
+        <div
+          class="field otp-field"
+          id="otpField"
+          hidden
+        >
+
+          <div class="otp-label-row">
+
+            <label>
+              Enter the 6-digit code
+            </label>
+
+            <span
+              class="otp-timer hide"
+              id="otpTimer"
+            >
+              Resend in 1:59
+            </span>
+
+          </div>
+
+
+          <!-- OTP Boxes -->
+
+          <div
+            class="otp-boxes"
+            id="otpBoxes"
+          >
+
+            <input
+              class="otp-box "
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              data-index="0"
+            >
+
+            <input
+              class="otp-box"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              data-index="1"
+            >
+
+            <input
+              class="otp-box"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              data-index="2"
+            >
+
+            <input
+              class="otp-box"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              data-index="3"
+            >
+
+            <input
+              class="otp-box"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              data-index="4"
+            >
+
+            <input
+              class="otp-box"
+              type="text"
+              inputmode="numeric"
+              maxlength="1"
+              data-index="5"
+            >
+
+          </div>
+
+
+          <!-- OTP Message -->
+
+          <p
+            class="otp-hint"
+            id="otpHint"
+          >
+            We sent a code to your email.
+          </p>
+
+
+          <!-- Verify OTP Button -->
+
+          <div class="otp-actions">
+
+            <button
+              type="button"
+              class="btn-verify hide"
+              id="verifyOtpBtn"
+            >
+              Verify OTP
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Create Account -->
+
+        <button
+          type="submit"
+          class="btn-primary"
+          id="submitBtn"
+        >
+          Create account
+        </button>
+
+
+        <!-- Terms -->
+
+        <p class="fine-print">
+
+          By continuing, you agree to the
+          Terms of Service and Privacy Policy.
+
+        </p>
+
+      </form>
+
+
+      <!-- Login -->
+
+      <p class="switch-line">
+
+        Already have an account?
+
+        <a href="#">
+          Log in
+        </a>
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+ 
+
+<script type="module" src="/script.js"></script>
+
+</body>
+
+</html>
