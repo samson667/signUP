@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sendOtpBtn.disabled = true;
       sendOtpBtn.textContent = 'Sending…';
       otpTimer.classList.toggle("hide")
-      startTimer(120);
+      startTimer(10);
       
       setTimeout(() => {
         sendOtpBtn.textContent = 'Resend';
