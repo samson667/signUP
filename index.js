@@ -94,10 +94,12 @@ app.post('/sendOtp', async (req, res) => {
       `____________________________________${req.body.email}___________________________________`
     );
 
-    transport.sendMail(mail, (error, info) => {
+       transport.sendMail(mail, (error, info) => {
       if (error) {
+        console.error('Email send error:', error);
         res.send('email send failed');
       } else {
+        console.log('Email sent:', info.response);
         res.send('mail send successFull');
       }
     });
