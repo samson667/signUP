@@ -94,15 +94,15 @@ app.post('/sendOtp', async (req, res) => {
       `____________________________________${req.body.email}___________________________________`
     );
 
-       transport.sendMail(mail, (error, info) => {
-      if (error) {
-        console.error('Email send error:', error);
-        res.send('email send failed');
-      } else {
-        console.log('Email sent:', info.response);
-        res.send('mail send successFull');
-      }
-    });
+transport.sendMail(mail, (error, info) => {
+  if (error) {
+    console.error('Email send error:', error);
+    res.status(500).send(`email send failed: ${error.message}`);
+  } else {
+    console.log('Email sent:', info.response);
+    res.send('mail send successFull');
+  }
+});
   } catch (error) {
     res.status(500).send('otp pathate giye server is failed');
   }
