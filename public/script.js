@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         otpField.hidden = false;
         otpHint.textContent = `We sent a code to ${email}.`;
         otpHint.className = 'otp-hint';
-      }, 120000);
+      }, 10000);
 
 
 
