@@ -4,24 +4,16 @@ import 'dotenv/config';
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import nodemailer from 'nodemailer'
 import mongoose from 'mongoose'
 import { otp_generte } from './private/otp.js'
 import  {db_otp} from './private/atlas.js'
+import SibApiV3Sdk from '@getbrevo/brevo'
+
+
 const app = express()
 
-
-const transport = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  },
-  family: 4
-})
-
+const brevoClient = new SibApiV3Sdk.TransactionalEmailsApi()
+brevoClient.setApiKey(SibApiV3Sdk.TransactionalEmailsApiApiKeys.apiKey, process.env.BREVO_API_KEY)
 
 
 
@@ -97,15 +89,19 @@ app.post('/sendOtp', async (req, res) => {
       `____________________________________${req.body.email}___________________________________`
     );
 
-transport.sendMail(mail, (error, info) => {
-  if (error) {
-    console.error('Email send error:', error);
-    res.status(500).send(`email send failed: ${error.message}`);
-  } else {
-    console.log('Email sent:', info.response);
-    res.send('mail send successFull');
-  }
-});
+try {
+  const response = await brevoClient.sendTransacEmail({
+    sender: { name: 'OTP Provider', email: 'notshareotp@gmail.com' },
+    to: [{ email: req.body.email }],
+    subject: 'Verify Your Email Address',
+    htmlContent: mail.html
+  });
+  console.log('Email sent:', response);
+  res.send('mail send successFull');
+} catch (error) {
+  console.error('Email send error:', error);
+  res.status(500).send(`email send failed: ${error.message}`);
+}
   } catch (error) {
     res.status(500).send('otp pathate giye server is failed');
   }
