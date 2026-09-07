@@ -7,16 +7,14 @@ import { fileURLToPath } from 'url'
 import mongoose from 'mongoose'
 import { otp_generte } from './private/otp.js'
 import  {db_otp} from './private/atlas.js'
-import * as SibApiV3Sdk from '@getbrevo/brevo'
+import { BrevoClient } from '@getbrevo/brevo'
 
 
 const app = express()
 
-const brevoClient = new SibApiV3Sdk.TransactionalEmailsApi()
-brevoClient.setApiKey(SibApiV3Sdk.TransactionalEmailsApiApiKeys.apiKey, process.env.BREVO_API_KEY)
 
 
-
+const brevo = new BrevoClient({ apiKey: process.env.BREVO_API_KEY })
 app.use(express.json())
 
 let absulate_path = fileURLToPath(import.meta.url)
@@ -90,14 +88,15 @@ app.post('/sendOtp', async (req, res) => {
     );
 
 try {
-  const response = await brevoClient.sendTransacEmail({
-    sender: { name: 'OTP Provider', email: 'notshareotp@gmail.com' },
-    to: [{ email: req.body.email }],
-    subject: 'Verify Your Email Address',
-    htmlContent: mail.html
-  });
-  console.log('Email sent:', response);
-  res.send('mail send successFull');
+ 
+  const response = await brevo.transactionalEmails.sendTransacEmail({
+  sender: { name: 'OTP Provider', email: 'notshareotp@gmail.com' },
+  to: [{ email: req.body.email }],
+  subject: 'Verify Your Email Address',
+  htmlContent: mail.html
+});
+console.log('Email sent:', response);
+res.send('mail send successFull');
 } catch (error) {
   console.error('Email send error:', error);
   res.status(500).send(`email send failed: ${error.message}`);
