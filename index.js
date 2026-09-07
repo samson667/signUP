@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url'
 import mongoose from 'mongoose'
 import { otp_generte } from './private/otp.js'
 import  {db_otp} from './private/atlas.js'
-import SibApiV3Sdk from '@getbrevo/brevo'
+import * as SibApiV3Sdk from '@getbrevo/brevo'
 
 
 const app = express()
