@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sendOtpBtn.disabled = true;
       sendOtpBtn.textContent = 'Sending…';
       otpTimer.classList.toggle("hide")
-      startTimer(10);
+      startTimer(120);
       
       setTimeout(() => {
         sendOtpBtn.textContent = 'Resend';
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         otpField.hidden = false;
         otpHint.textContent = `We sent a code to ${email}.`;
         otpHint.className = 'otp-hint';
-      }, 10000);
+      }, 120000);
 
 
 
