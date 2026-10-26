@@ -13,6 +13,16 @@ import { BrevoClient } from '@getbrevo/brevo'
 const app = express()
 
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Content-Type')
+  res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+  if (req.method === 'OPTIONS') return res.sendStatus(204)
+  next()
+})
+
+
+
 
 const brevo = new BrevoClient({ apiKey: process.env.BREVO_API_KEY })
 app.use(express.json())
