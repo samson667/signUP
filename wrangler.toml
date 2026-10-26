@@ -2,11 +2,10 @@ name = "signup"
 main = "index.js"
 compatibility_date = "2026-10-26"
 
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# আপনার যদি কোনো এনভায়রনমেন্ট ভ্যারিয়েবল থাকে এখানে দিতে পারেন
+
 [build]
 command = ""
-
-# এই লাইনটি যুক্ত করুন:
-[observability]
-enabled = true
-
-# অথবা wrangler কনফিগারেশনে আউটপুট ফরম্যাট ঠিক করতে সরাসরি worker-এ esm ব্যবহার করতে পারেন:
